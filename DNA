@@ -1,0 +1,6 @@
+import collections    #importuję moduł collections
+
+DNA = 'AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC'  #string z łańcuchem DNA podanym w zadaniu
+
+zasady = collections.Counter(DNA)       #zmienna 'zasady' wykorzystująca działanie modułu służacego do zliczania podanych elementów
+print(zasady['A'], zasady['C'], zasady['G'], zasady['T'])     #wywołanie zmiennej zasady i podanie elementów które mają zostać policzone
