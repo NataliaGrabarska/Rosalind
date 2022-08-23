@@ -1,0 +1,13 @@
+s = 'GAGCCTACTAACGGGAT'
+t = 'CATCGTAATGACGGCCT'       #dwa stringi o identycznej długości podane w zadaniu
+
+def dystans(s,t):             #funkcja 'dystans(s,t)' obliczająca Odległość Hamminga
+    wynik = 0
+    
+    for i, j in enumerate(s):       #pętla for z warunkiem if który zostaje spełniony gdy każdy znak ze stringa s jest różny od odpowiadającemu mu znakowi w stringu t
+        if j != t[i]:
+            wynik += 1              #zmienna 'wynik' w której sumowana jest liczba przypadków spełniających powyższy warunek
+        
+    return wynik
+
+print(dystans(s,t))                 #wywołanie funkcji 'dystans(s,t)'
