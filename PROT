@@ -1,0 +1,20 @@
+RNA = 'AUGGCCAUGGCGCCCAGAACUGAGAUCAAUAGUACCCGUAUUAACGGGUGA'       #łańcuch RNA podany w zadaniu
+
+aminokwasy = {'AUG':'M', 'GCC':'A', 'GCG':'A', 'CCC':'P', 
+              'AGA':'R', 'ACU':'T', 'GAG':'E', 'AUC':'I',
+              'AAU':'N', 'AGU':'S', 'ACC':'T', 'CGU':'R',
+              'AUU':'I', 'AAC':'N', 'GGG':'G', 'UGA':'STOP'}            #słownik 'aminokwasy' w którym kluczami są kodony występujące w podanym RNA, 
+                                                                            #a wartościami są przypisane im aminokwasy
+
+def kodony(RNA):                  #tworzenie funkcji 'kodony(RNA)' której zadaniem jest przypisywanie podanym w słowniku trójkom zasad odpowiednich liter aminokwasów
+    wynik = '' 
+    
+    for i in range(0, len(RNA), 3):               #pętla for działająca na długości zmiennej RNA co trzy elementy w tym stringu
+        kodon = aminokwasy[RNA[i:i+3]]            #zmiana każdego z trzech elementów na przypisaną im wartość
+        if kodon == 'STOP':                       #warunek if który w razie wystąpienia kodonu 'STOP' przerywa działanie pętli
+            break 
+        wynik += kodon                            #utworzenie zmiennej 'wynik' której przypisywane są po kolei kolejne właściwe litery aminokwasów
+        
+    return wynik
+
+print(kodony(RNA))            #wywołanie funkcji 'kodony(RNA)'
