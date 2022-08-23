@@ -1,0 +1,13 @@
+s1 = 'GCAACGCACAACGAAAACCCTTAGGGACTGGATTATTTCGTGATCGTTGTAGTTATTGGAAGTACGGGCATCAACCCAGTT'
+s2 = 'TTATCTGACAAAGAAAGCCGTCAACGGCTGGATAATTTCGCGATCGTGCTGGTTACTGGCGGTACGAGTGTTCCTTTGGGT'      #dwa łańcuchy DNA podane w zadaniu
+
+def proporcja(s1, s2):                  #funkcja 'proporcja(s1,s2)' gdzie liczona jest proporcja tranzycji do transwersji między łańcuchami s1 i s2
+    tranzycja = [('A', 'G'), ('G', 'A'), ('C', 'T'), ('T', 'C')]          #stała 'tranzycja' w której wypisane są tranzycje między poszczególnymi zasadami azotowymi
+    wynik = {True: 0.0, False: 0.0}
+    
+    for i in zip(s1, s2):          #pętla for z warunkiem if który zostaje spełniony gdy każdy kolejny znak w łańcuchu s1 jest różny od odpowiadającemu mu znakowi w s2
+        if i[0] != i[1]:
+            wynik[i in tranzycja] += 1        #gdy warunek pętli zostanie spełniony i zajdzie tranzycja wypisana powyżej to zmienna wynik powiększy się o jeden
+    return wynik[True] / wynik[False]         #liczba tranzycji podzielona przez liczbę transwersji
+
+print(proporcja(s1, s2))        #wywołanie funkcji 'proporcja(s1,s2)'
