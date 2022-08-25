@@ -1,0 +1,41 @@
+kodony_RNA = {
+    'UUU': 'F',     'CUU': 'L',     'AUU': 'I',     'GUU': 'V',
+    'UUC': 'F',     'CUC': 'L',     'AUC': 'I',     'GUC': 'V',
+    'UUA': 'L',     'CUA': 'L',     'AUA': 'I',     'GUA': 'V',
+    'UUG': 'L',     'CUG': 'L',     'AUG': 'M',     'GUG': 'V',
+    'UCU': 'S',     'CCU': 'P',     'ACU': 'T',     'GCU': 'A',
+    'UCC': 'S',     'CCC': 'P',     'ACC': 'T',     'GCC': 'A',
+    'UCA': 'S',     'CCA': 'P',     'ACA': 'T',     'GCA': 'A',
+    'UCG': 'S',     'CCG': 'P',     'ACG': 'T',     'GCG': 'A',
+    'UAU': 'Y',     'CAU': 'H',     'AAU': 'N',     'GAU': 'D',
+    'UAC': 'Y',     'CAC': 'H',     'AAC': 'N',     'GAC': 'D',
+    'UAA': 'Stop',  'CAA': 'Q',     'AAA': 'K',     'GAA': 'E',
+    'UAG': 'Stop',  'CAG': 'Q',     'AAG': 'K',     'GAG': 'E',
+    'UGU': 'C',     'CGU': 'R',     'AGU': 'S',     'GGU': 'G',
+    'UGC': 'C',     'CGC': 'R',     'AGC': 'S',     'GGC': 'G',
+    'UGA': 'Stop',  'CGA': 'R',     'AGA': 'R',     'GGA': 'G',
+    'UGG': 'W',     'CGG': 'R',     'AGG': 'R',     'GGG': 'G'
+}                                                                     #słownik z kodonami RNA
+
+białko = 'MA'         #białko podane w zadaniu
+
+def ilosc():            #funkcja zliczająca liczbę kodonów kodujących ten sam aminokwas
+    wynik = {}
+    
+    for i, j in kodony_RNA.items():     #pętla for która w zmiennej 'wynik' umieszcza liczbę kodonów kodujących ten sam aminokwas na podstawie słownika z kodonami RNA
+        if j not in wynik:
+            wynik[j] = 1                #gdy dany aminokwas pojawił się w słowniku zmienna 'wynik' przyjmuje wartość jeden
+        else:
+            wynik[j] += 1               #gdy dany aminokwas pojawi się po raz kolejny do zmiennej 'wynik' ponowanie dodawana jest wartość jeden
+    return wynik                        #co końcowo daje sumę kodonów kodujących jeden aminokwas
+
+def sekwencja(białko):                  #funckja która do każdej możliwości ułożenia kodonów w podanym białku "dodaje" każdy możliwy kodon 'Stop'
+    i = ilosc()                         #przypisanie zmiennej 'i' funkcji 'ilosc()'
+    n = i['Stop']                       #przypisanie zmiennej 'n' ilości kodonów 'Stop'
+    
+    for x in białko:         #pętla for która każdej możliwej kombinacji kodonów w podanym białku przypisuje każdy możliwy kodon 'Stop' i zlicza ilość takich możliwości
+        n *= i[x]
+        
+    return n
+
+print(sekwencja(białko))                #wywołanie funkcji 'sekwencja(białko)'
