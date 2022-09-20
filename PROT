@@ -1,20 +1,33 @@
-RNA = 'AUGGCCAUGGCGCCCAGAACUGAGAUCAAUAGUACCCGUAUUAACGGGUGA'       #łańcuch RNA podany w zadaniu
+RNA = 'AUGGCCAUGGCGCCCAGAACUGAGAUCAAUAGUACCCGUAUUAACGGGUGA'       #RNA string from the exercise
 
-aminokwasy = {'AUG':'M', 'GCC':'A', 'GCG':'A', 'CCC':'P', 
-              'AGA':'R', 'ACU':'T', 'GAG':'E', 'AUC':'I',
-              'AAU':'N', 'AGU':'S', 'ACC':'T', 'CGU':'R',
-              'AUU':'I', 'AAC':'N', 'GGG':'G', 'UGA':'STOP'}            #słownik 'aminokwasy' w którym kluczami są kodony występujące w podanym RNA, 
-                                                                            #a wartościami są przypisane im aminokwasy
+RNA_codon_table = {
+    'UUU': 'F',     'CUU': 'L',     'AUU': 'I',     'GUU': 'V',
+    'UUC': 'F',     'CUC': 'L',     'AUC': 'I',     'GUC': 'V',
+    'UUA': 'L',     'CUA': 'L',     'AUA': 'I',     'GUA': 'V',
+    'UUG': 'L',     'CUG': 'L',     'AUG': 'M',     'GUG': 'V',
+    'UCU': 'S',     'CCU': 'P',     'ACU': 'T',     'GCU': 'A',
+    'UCC': 'S',     'CCC': 'P',     'ACC': 'T',     'GCC': 'A',
+    'UCA': 'S',     'CCA': 'P',     'ACA': 'T',     'GCA': 'A',
+    'UCG': 'S',     'CCG': 'P',     'ACG': 'T',     'GCG': 'A',
+    'UAU': 'Y',     'CAU': 'H',     'AAU': 'N',     'GAU': 'D',
+    'UAC': 'Y',     'CAC': 'H',     'AAC': 'N',     'GAC': 'D',
+    'UAA': 'Stop',  'CAA': 'Q',     'AAA': 'K',     'GAA': 'E',
+    'UAG': 'Stop',  'CAG': 'Q',     'AAG': 'K',     'GAG': 'E',
+    'UGU': 'C',     'CGU': 'R',     'AGU': 'S',     'GGU': 'G',
+    'UGC': 'C',     'CGC': 'R',     'AGC': 'S',     'GGC': 'G',
+    'UGA': 'Stop',  'CGA': 'R',     'AGA': 'R',     'GGA': 'G',
+    'UGG': 'W',     'CGG': 'R',     'AGG': 'R',     'GGG': 'G'
+}
 
-def kodony(RNA):                  #tworzenie funkcji 'kodony(RNA)' której zadaniem jest przypisywanie podanym w słowniku trójkom zasad odpowiednich liter aminokwasów
-    wynik = '' 
+def codons(RNA):                  #function 'codons(RNA)' which changes every three characters into adequate letter from the 'RNA_codon_table'
+    result = '' 
     
-    for i in range(0, len(RNA), 3):               #pętla for działająca na długości zmiennej RNA co trzy elementy w tym stringu
-        kodon = aminokwasy[RNA[i:i+3]]            #zmiana każdego z trzech elementów na przypisaną im wartość
-        if kodon == 'STOP':                       #warunek if który w razie wystąpienia kodonu 'STOP' przerywa działanie pętli
+    for i in range(0, len(RNA), 3):               #for loop that works every three characters in the RNA string
+        codon = RNA_codon_table[RNA[i:i+3]]            #changing every three characters into adequate letter from the 'RNA_codon_table'
+        if codon == 'STOP':                       #if statement which ends the loop when codon 'Stop' appears
             break 
-        wynik += kodon                            #utworzenie zmiennej 'wynik' której przypisywane są po kolei kolejne właściwe litery aminokwasów
+        wynik += codon                            #'result' that sums up all proteins
         
-    return wynik
+    return result
 
-print(kodony(RNA))            #wywołanie funkcji 'kodony(RNA)'
+print(codons(RNA))
