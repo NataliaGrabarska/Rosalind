@@ -26,7 +26,7 @@ def codons(RNA):                  #function 'codons(RNA)' which changes every th
         codon = RNA_codon_table[RNA[i:i+3]]            #changing every three characters into adequate letter from the 'RNA_codon_table'
         if codon == 'STOP':                       #if statement which ends the loop when codon 'Stop' appears
             break 
-        wynik += codon                            #'result' that sums up all proteins
+        result += codon                            #'result' that sums up all proteins
         
     return result
 
