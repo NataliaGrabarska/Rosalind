@@ -1,4 +1,4 @@
-kodony_DNA = {
+DNA_codon_table = {
     'TTT': 'F',     'CTT': 'L',     'ATT': 'I',     'GTT': 'V',
     'TTC': 'F',     'CTC': 'L',     'ATC': 'I',     'GTC': 'V',
     'TTA': 'L',     'CTA': 'L',     'ATA': 'I',     'GTA': 'V',
@@ -15,28 +15,28 @@ kodony_DNA = {
     'TGC': 'C',     'CGC': 'R',     'AGC': 'S',     'GGC': 'G',
     'TGA': '-',     'CGA': 'R',     'AGA': 'R',     'GGA': 'G',
     'TGG': 'W',     'CGG': 'R',     'AGG': 'R',     'GGG': 'G'
-}                                                                       #tablica kodonów występujących w DNA
+}
 
-DNA = 'ATGGTCTACATAGCTGACAAACAGCACGTAGCAATCGGTCGAATCTCGAGAGGCATATGGTCACATGATCGGTCGAGCGTGTTTCAAAGTTTGCGCCTAG'      #łańcuch DNA podany w zadaniu
+DNA = 'ATGGTCTACATAGCTGACAAACAGCACGTAGCAATCGGTCGAATCTCGAGAGGCATATGGTCACATGATCGGTCGAGCGTGTTTCAAAGTTTGCGCCTAG'      #DNA string from the exercise
 intron1 = 'ATCGGTCGAA'
-intron2 = 'ATCGGTCGAGCGTGT'       #dwa introny podane w zadaniu
+intron2 = 'ATCGGTCGAGCGTGT'       #two introns from the exercise
 
     
 for i in intron1:
-    DNAi = DNA.replace(intron1, '')           #pętla usuwająca pierwszy intron z łańcucha DNA
+    DNAi = DNA.replace(intron1, '')           #for loop deleting first itron from the DNA string
         
 for j in intron2:
-    DNAj = DNAi.replace(intron2, '')          #pętla usuwająca drugi intron z nowo powstałego łańcucha DNA (DNAi)
+    DNAj = DNAi.replace(intron2, '')          #for loop deleting second itron from the DNAi string
     
-def białko(DNAj):                             #funkcja 'białko(DNAj)' która w łańcuchu DNAj (powstałego po usunięciu drugiego introna) zmienia kodony na aminokwasy
-    wynik = '' 
+def protein(DNAj):                             #function 'protein(DNAj)' which changes codons into proteins
+    result = '' 
     
-    for i in range(0, len(DNAj), 3):    #pętla działająca co trzy znaki w stringu DNAj zmieniająca odpowiednie trójki znaków na przypisane im litery w słowniku 'kodony_DNA'
-        kodon = kodony_DNA[DNAj[i:i+3]]
-        if kodon == '-':                #warunek if kończący pętle gdy wystąpi kodon '-' (Stop)
+    for i in range(0, len(DNAj), 3):    #for loop changing every three letters into adequate characters from the 'DNA_codon_table'        
+        codon = DNA_codon_table[DNAj[i:i+3]]
+        if codon == '-':                #if statement which ends the loop when codon '-' (Stop) appears
             break 
-        wynik += kodon                  #zmienna 'wynik' łącząca wszystkie aminokwasy występujące w łańcuchu DNAj
+        result += codon                  #'result' summing up all proteins in the DNA string
         
-    return wynik
+    return result
 
-print(białko(DNAj))             #wywołanie funkcji 'białko(DNAj)'
+print(protein(DNAj))
