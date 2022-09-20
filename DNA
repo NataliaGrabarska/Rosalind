@@ -1,6 +1,6 @@
-import collections    #importuję moduł collections
+import collections    
 
-DNA = 'AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC'  #string z łańcuchem DNA podanym w zadaniu
+DNA = 'AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC'  #DNA string from the exercise
 
-zasady = collections.Counter(DNA)       #zmienna 'zasady' wykorzystująca działanie modułu służacego do zliczania podanych elementów
-print(zasady['A'], zasady['C'], zasady['G'], zasady['T'])     #wywołanie zmiennej zasady i podanie elementów które mają zostać policzone
+number = collections.Counter(DNA)
+print(number['A'], number['C'], number['G'], number['T'])     #printing 'number' that counts the number of nucleobases in the DNA string
