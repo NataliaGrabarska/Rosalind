@@ -1,13 +1,13 @@
 s1 = 'GCAACGCACAACGAAAACCCTTAGGGACTGGATTATTTCGTGATCGTTGTAGTTATTGGAAGTACGGGCATCAACCCAGTT'
-s2 = 'TTATCTGACAAAGAAAGCCGTCAACGGCTGGATAATTTCGCGATCGTGCTGGTTACTGGCGGTACGAGTGTTCCTTTGGGT'      #dwa łańcuchy DNA podane w zadaniu
+s2 = 'TTATCTGACAAAGAAAGCCGTCAACGGCTGGATAATTTCGCGATCGTGCTGGTTACTGGCGGTACGAGTGTTCCTTTGGGT'      #two strings from the exercise
 
-def proporcja(s1, s2):                  #funkcja 'proporcja(s1,s2)' gdzie liczona jest proporcja tranzycji do transwersji między łańcuchami s1 i s2
-    tranzycja = [('A', 'G'), ('G', 'A'), ('C', 'T'), ('T', 'C')]          #stała 'tranzycja' w której wypisane są tranzycje między poszczególnymi zasadami azotowymi
-    wynik = {True: 0.0, False: 0.0}
+def ratio(s1, s2):                  #function 'ratio(s1,s2)' which calculates the ratio of the total number of transitions to the total number of transversions
+    transition = [('A', 'G'), ('G', 'A'), ('C', 'T'), ('T', 'C')]          #types of transitions between nucleobases
+    result = {True: 0.0, False: 0.0}
     
-    for i in zip(s1, s2):          #pętla for z warunkiem if który zostaje spełniony gdy każdy kolejny znak w łańcuchu s1 jest różny od odpowiadającemu mu znakowi w s2
+    for i in zip(s1, s2):          #for loop with if statement which is True when every character from the s1 string is different from the following character in the s2 string
         if i[0] != i[1]:
-            wynik[i in tranzycja] += 1        #gdy warunek pętli zostanie spełniony i zajdzie tranzycja wypisana powyżej to zmienna wynik powiększy się o jeden
-    return wynik[True] / wynik[False]         #liczba tranzycji podzielona przez liczbę transwersji
+            result[i in transition] += 1        #when the if statement is True 'result' increases by one
+    return result[True] / result[False]         #the number of transitions divided by the number of transversions
 
-print(proporcja(s1, s2))        #wywołanie funkcji 'proporcja(s1,s2)'
+print(ratio(s1, s2))        #printing function 'ratio(s1,s2)'
