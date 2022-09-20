@@ -1,8 +1,8 @@
-DNA = 'AAAACCCGGT'        #łańcuch DNA podany w zadaniu
+DNA = 'AAAACCCGGT'        #DNA string from the exercise
 
-iDNA = DNA[::-1]          #tworzenie zmiennej iDNA która odwraca kolejność znaków w zmiennej DNA
+iDNA = DNA[::-1]          #'iDNA' with changed order of characters in the DNA string
 
-komp_zasady = {'A':'T', 'T':'A', 'C':'G', 'G':'C'}      #tworzenie słownika w którym każdej zasadzie azotowej przypisuje się komplementarną jej zasadę
+complement = {'A':'T', 'T':'A', 'C':'G', 'G':'C'}      #dictionary with complementary bases
 
-for i in iDNA:                              #pętla for działająca na zmiennej iDNA, która korzystając z danych w słowniku zmienia dany klucz na podaną wartość
-    print(komp_zasady[i], end = '')
+for i in iDNA:                              #for loop that changes nucleobases in the DNA string using 'complement' dictionary
+    print(complement[i], end = '')
