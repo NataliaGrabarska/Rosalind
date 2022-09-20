@@ -1,14 +1,14 @@
 s = 'GATATATGCATATACTT'
-t = 'ATAT'                  #łańcuchy DNA podane w zadaniu
+t = 'ATAT'                  #two strings from the exercise
 
-def położenie(s,t):         #funkcja 'położenie(s,t)' podająca miejsce położenia łańcucha t w łańcuchu s
-    wynik = []
+def position(s,t):         #function 'position(s,t)' indicating the placement of the t string in the s string
+    result = []
     
-    lt = len(t)             #zmienna której przypisana jest długość łańcucha t
+    lt = len(t)
     
-    for i in range(len(s)-lt):        #pętla for z warunkiem if który zostaje spełniony gdy w łańcuchu s pojawi się łańcuch t
+    for i in range(len(s)-lt):        #for loop with if statement which is True when t string appears in the s string
         if s[i:i+lt] == t:
-            wynik.append(i+1)         #wynik pętli który wskazuje miejsce pierwszego znaku łańcucha t w łańcuchu s
-    return wynik
+            result.append(i+1)         #'result' that indicates the placement of the first character of t string in the s string
+    return result
 
-print(położenie(s,t))           #wywołanie funkji 'położenie(s,t)'
+print(position(s,t))           #printing function 'position(s,t)'
