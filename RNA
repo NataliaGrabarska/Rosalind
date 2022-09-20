@@ -1,7 +1,7 @@
-DNA = 'GATGGAACTTGACTACGTAAATT'     #łańcuch DNA podany w zadaniu
+DNA = 'GATGGAACTTGACTACGTAAATT'     #DNA string from the exercise
 
-for RNA in DNA:                     #pętla for działająca na łańcuchu DNA, która zmienia każdą literę 'T' na literę 'U'
+for RNA in DNA:                     #for loop that changes every letter 'T' to 'U' in the DNA string
     RNA = DNA.replace('T', 'U')
         
-print(RNA)        #wywołanie zmiennej RNA ze zmienionymi literami
+print(RNA)        #printing RNA with changed nucleobases
     
