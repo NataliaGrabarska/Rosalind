@@ -1,13 +1,13 @@
 s = 'GAGCCTACTAACGGGAT'
-t = 'CATCGTAATGACGGCCT'       #dwa łańcuchy o identycznej długości podane w zadaniu
+t = 'CATCGTAATGACGGCCT'       #two strings from the exercise
 
-def dystans(s,t):             #funkcja 'dystans(s,t)' obliczająca Odległość Hamminga
-    wynik = 0
+def distance(s,t):             #function 'distance(s,t)' that calculates the Hamming Distance
+    result = 0
     
-    for i, j in enumerate(s):       #pętla for z warunkiem if który zostaje spełniony gdy każdy znak z łańcucha s jest różny od odpowiadającemu mu znakowi w łańcuchu t
+    for i, j in enumerate(s):       #for loop with if statement which is True when every character from the s string is different from the following character in the t string
         if j != t[i]:
-            wynik += 1              #zmienna 'wynik' w której sumowana jest liczba przypadków spełniających powyższy warunek
+            result += 1              #'result' that sums up the amount of True statements
         
-    return wynik
+    return result
 
-print(dystans(s,t))                 #wywołanie funkcji 'dystans(s,t)'
+print(distance(s,t))                 #printing function 'distance(s,t)'
