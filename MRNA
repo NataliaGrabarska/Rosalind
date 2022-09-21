@@ -1,4 +1,4 @@
-kodony_RNA = {
+RNA_codon_table = {
     'UUU': 'F',     'CUU': 'L',     'AUU': 'I',     'GUU': 'V',
     'UUC': 'F',     'CUC': 'L',     'AUC': 'I',     'GUC': 'V',
     'UUA': 'L',     'CUA': 'L',     'AUA': 'I',     'GUA': 'V',
@@ -15,27 +15,27 @@ kodony_RNA = {
     'UGC': 'C',     'CGC': 'R',     'AGC': 'S',     'GGC': 'G',
     'UGA': 'Stop',  'CGA': 'R',     'AGA': 'R',     'GGA': 'G',
     'UGG': 'W',     'CGG': 'R',     'AGG': 'R',     'GGG': 'G'
-}                                                                     #słownik z kodonami RNA
+}
 
-białko = 'MA'         #białko podane w zadaniu
+protein = 'MA'         #protein from the exercise
 
-def ilosc():            #funkcja zliczająca liczbę kodonów kodujących ten sam aminokwas
-    wynik = {}
+def codons():            #function which counts the number of codons that form the same protein
+    result = {}
     
-    for i, j in kodony_RNA.items():     #pętla for która w zmiennej 'wynik' umieszcza liczbę kodonów kodujących ten sam aminokwas na podstawie słownika z kodonami RNA
-        if j not in wynik:
-            wynik[j] = 1                #gdy dany aminokwas pojawił się w słowniku zmienna 'wynik' przyjmuje wartość jeden
+    for i, j in RNA_codon_table.items():     #for loop which counts the number of codons that form the same protein based on the dictionary 'RNA_codon_table'
+        if j not in result:
+            result[j] = 1
         else:
-            wynik[j] += 1               #gdy dany aminokwas pojawi się po raz kolejny do zmiennej 'wynik' ponowanie dodawana jest wartość jeden
-    return wynik                        #co końcowo daje sumę kodonów kodujących jeden aminokwas
+            result[j] += 1
+    return result
 
-def sekwencja(białko):                  #funckja która do każdej możliwości ułożenia kodonów w podanym białku "dodaje" każdy możliwy kodon 'Stop'
-    i = ilosc()                         #przypisanie zmiennej 'i' funkcji 'ilosc()'
-    n = i['Stop']                       #przypisanie zmiennej 'n' ilości kodonów 'Stop'
+def sequence(protein):                  #function that 'adds' every possible codon 'Stop' to every possible codon sequence
+    c = codons()
+    n = c['Stop']                       #n = the number of codon 'Stop'
     
-    for x in białko:         #pętla for która każdej możliwej kombinacji kodonów w podanym białku przypisuje każdy możliwy kodon 'Stop' i zlicza ilość takich możliwości
-        n *= i[x]
+    for x in protein:
+        n *= c[x]
         
     return n
 
-print(sekwencja(białko))                #wywołanie funkcji 'sekwencja(białko)'
+print(sequence(protein))
